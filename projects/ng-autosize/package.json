@@ -1,8 +1,14 @@
 {
-  "name": "ng-autosize",
-  "version": "0.0.1",
+  "name": "@cnblogs/ng-autosize",
+  "version": "6.1.0",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+  },
+  "description": "Angular Directive that automatically adjusts textarea height to fit content",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cnblogs/ng-autosize.git"
+  },
+  "license": "MIT"
 }
