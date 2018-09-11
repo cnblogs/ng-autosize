@@ -1,10 +1,11 @@
 import { Input, AfterViewInit, ElementRef, HostListener, Directive } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: 'textarea[autosize]'
 })
 
-export class Autosize implements AfterViewInit {
+export class AutosizeDirective implements AfterViewInit {
 
   private el: HTMLElement;
   private _minHeight: string;
@@ -31,19 +32,19 @@ export class Autosize implements AfterViewInit {
   }
 
   @HostListener('window:resize', ['$event.target'])
-    onResize(textArea: HTMLTextAreaElement): void {
-      // Only apply adjustment if element width had changed.
-      if (this.el.clientWidth === this._clientWidth) {
-        return
-      };
-      this._clientWidth = this.element.nativeElement.clientWidth;
-      this.adjust();
+  onResize(textArea: HTMLTextAreaElement): void {
+    // Only apply adjustment if element width had changed.
+    if (this.el.clientWidth === this._clientWidth) {
+      return;
     }
+    this._clientWidth = this.element.nativeElement.clientWidth;
+    this.adjust();
+  }
 
   @HostListener('input', ['$event.target'])
-    onInput(textArea: HTMLTextAreaElement): void {
-      this.adjust();
-    }
+  onInput(textArea: HTMLTextAreaElement): void {
+    this.adjust();
+  }
 
   constructor(public element: ElementRef) {
     this.el = element.nativeElement;
@@ -64,7 +65,7 @@ export class Autosize implements AfterViewInit {
 
   adjust(): void {
     // perform height adjustments after input changes, if height is different
-    if (this.el.style.height == this.element.nativeElement.scrollHeight + 'px') {
+    if (this.el.style.height === this.element.nativeElement.scrollHeight + 'px') {
       return;
     }
     this.el.style.overflow = 'hidden';
